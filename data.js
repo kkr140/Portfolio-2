@@ -9,7 +9,7 @@ export const portfolioData = {
   "navigation": ["Home", "About", "Experience", "Projects", "Skills", "Contact"],
   "hero": {
     "name": "KIRAN KUMAR REDDY",
-    "tagline": "Video Editor • Motion Graphic Designer • Cinematographer",
+    "tagline": "Video Editor • Motion Graphic Designer",
     "buttons": [
       { "label": "Explore Work", "target": "#projects" },
       { "label": "Follow Me", "url": "https://www.instagram.com/itz_me_reddy._.19/" }

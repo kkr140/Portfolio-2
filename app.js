@@ -1,4 +1,4 @@
-import { portfolioData } from './data.js';
+import { portfolioData } from './data.js?v=2';
 
 // URL validation to prevent XSS (javascript: links)
 function validateUrl(url) {
@@ -562,7 +562,7 @@ function initEffects() {
   // Typing effect
   const subtitleEl = document.querySelector('.hero-subtitle');
   if (subtitleEl) {
-    const titles = ['Video Editor', 'Motion Graphic Designer', 'Cinematographer'];
+    const titles = ['Video Editor', 'Motion Graphic Designer'];
     let titleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
