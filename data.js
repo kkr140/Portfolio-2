@@ -11,8 +11,7 @@ export const portfolioData = {
     "name": "KIRAN KUMAR REDDY",
     "tagline": "Video Editor • Motion Graphic Designer",
     "buttons": [
-      { "label": "Explore Work", "target": "#projects" },
-      { "label": "Follow Me", "url": "https://www.instagram.com/itz_me_reddy._.19/" }
+      { "label": "Explore Work", "target": "#projects" }
     ]
   },
   "about": {
@@ -58,39 +57,60 @@ export const portfolioData = {
   ],
   "largeProjects": [
     {
+      "title": "Oka Nirnayam",
+      "projectType": "Short Film",
+      "role": "Editing - Color Grading",
+      "watchUrl": "https://drive.google.com/file/d/1s71kraGGBi1RlA3pimVFkZXxrrlF3qa3/view",
+      "cover": "assets/3.png"
+    },
+    {
+      "title": "Oo Katha",
+      "projectType": "Short Film",
+      "role": "VFX & Animation",
+      "watchUrl": "https://youtu.be/OeNyvRceGE0?si=1c5mQNHrTEFV0bG1",
+      "cover": "assets/ookatha.jpg"
+    },
+    {
+      "title": "Oriya Pilla",
+      "projectType": "Cover Song",
+      "role": "Co-Editor",
+      "watchUrl": "https://youtu.be/jgCFE0okhAg?si=aPu68qBv7VWCl76P",
+      "cover": "assets/oriyapilla.jpg"
+    },
+    {
+      "title": "3B's",
+      "projectType": "Teaser Trailer",
+      "role": "Editor",
+      "watchUrl": "https://youtu.be/awUOq-ssrPI?si=G2zh46_MnVf088CW",
+      "cover": "assets/3bs.jpg"
+    },
+    {
       "title": "Beyond the Vision: A Plan of Action",
-      "projectType": "Motion Graphics Video",
-      "role": "Editing - Motion Graphics",
-      "watchUrl": "https://drive.google.com/file/d/1w_E7Pt28PREvCV7E7Kv39eanCUkH_A4i/view",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DNDi9ilyFOg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "cover": "assets/2.png"
     },
     {
       "title": "Why We Shifted Our Entire Back-End to AWS",
-      "projectType": "Promotional Video",
-      "role": "Editing - Color Grading",
-      "watchUrl": "https://drive.google.com/file/d/1T9iL_KaaWUtZCrPH76n4x2_8U1OVg1yy/view",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DMcuRopS7s1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "cover": "assets/4.png"
     },
     {
       "title": "Pivot to Scale: How Shifting to AWS Saved Our MVP",
-      "projectType": "Promotional Video",
-      "role": "Editing - Motion Graphics",
-      "watchUrl": "https://drive.google.com/file/d/1pDoT4vNLD0V4kFZyBIOlZF2VGdJE5mRk/view",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DMp_YE_IQq2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "cover": "assets/5.png"
     },
     {
       "title": "Stop Making the Same Mistakes",
-      "projectType": "Content Video",
-      "role": "Editing - Post Production",
-      "watchUrl": "https://drive.google.com/file/d/1QG6x1gN9YyDGB3exZ92coKT0-5ncCqdv/view",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DM7v4ekyxRG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
       "cover": "assets/6.png"
-    },
-    {
-      "title": "Oka Nirnayam",
-      "projectType": "Short Film",
-      "role": "Editing - Color Grading - Motion Graphics",
-      "watchUrl": "https://drive.google.com/file/d/1s71kraGGBi1RlA3pimVFkZXxrrlF3qa3/view",
-      "cover": "assets/3.png"
     }
   ],
   "education": [
@@ -130,7 +150,6 @@ export const portfolioData = {
   "contact": {
     "heading": "Get In Touch",
     "message": "Open to collaborations, freelance projects, and creative partnerships. Let's create something amazing together.",
-    "instagram": "https://www.instagram.com/itz_me_reddy._.19/",
     "instagram_work": "https://www.instagram.com/justedits.official/",
     "whatsapp": "https://wa.me/qr/POWDIQ5KEKTSO1",
     "telegram": "https://t.me/kirankumarreddy14",

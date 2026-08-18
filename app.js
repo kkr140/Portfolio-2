@@ -19,13 +19,22 @@ function validateUrl(url) {
   return '#';
 }
 
-// Extract Google Drive ID to create an embeddable preview URL
-function getGoogleDriveEmbedUrl(url) {
+// Extract Google Drive or YouTube ID to create an embeddable URL
+function getVideoEmbedUrl(url) {
   if (!url) return '';
-  const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-  if (match && match[1]) {
-    return `https://drive.google.com/file/d/${match[1]}/preview`;
+  
+  // Google Drive
+  const driveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (driveMatch && driveMatch[1]) {
+    return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
   }
+  
+  // YouTube (watch, shorts, embed, youtu.be)
+  const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([^#\&\?]+)/);
+  if (ytMatch && ytMatch[1]) {
+    return `https://www.youtube.com/embed/${ytMatch[1]}`;
+  }
+  
   return url;
 }
 
@@ -366,7 +375,11 @@ function renderProjects() {
 
     // Watch video click trigger
     watchBtn.addEventListener('click', () => {
-      openVideoModal(proj.title, proj.watchUrl);
+      if (proj.watchUrl.includes('drive.google.com')) {
+        openVideoModal(proj.title, proj.watchUrl);
+      } else {
+        window.open(validateUrl(proj.watchUrl), '_blank');
+      }
     });
 
     info.appendChild(title);
@@ -393,7 +406,6 @@ function renderContact() {
     const methods = [
       { key: 'whatsapp', icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: portfolioData.contact.whatsapp },
       { key: 'telegram', icon: 'fa-brands fa-telegram', label: 'Telegram', url: portfolioData.contact.telegram },
-      { key: 'instagram', icon: 'fa-brands fa-instagram', label: 'Instagram (Personal)', url: portfolioData.contact.instagram },
       { key: 'instagram_work', icon: 'fa-solid fa-clapperboard', label: 'Instagram (Work)', url: portfolioData.contact.instagram_work },
       { key: 'linkedin', icon: 'fa-brands fa-linkedin', label: 'LinkedIn', url: portfolioData.contact.linkedin },
       { key: 'youtube', icon: 'fa-brands fa-youtube', label: 'YouTube', url: portfolioData.contact.youtube }
@@ -504,7 +516,7 @@ function initVideoModal() {
 function openVideoModal(title, url) {
   if (!videoModal || !videoFrame) return;
 
-  const embedUrl = getGoogleDriveEmbedUrl(url);
+  const embedUrl = getVideoEmbedUrl(url);
   videoFrame.setAttribute('src', embedUrl);
   videoModal.classList.add('visible');
   document.body.style.overflow = 'hidden';
