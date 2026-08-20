@@ -16,33 +16,67 @@ export const portfolioData = {
   },
   "about": {
     "heading": "About Me",
-    "description": "Video Editor & Motion Graphic Designer with hands-on experience creating engaging visual content. Worked with KL Student Affairs, Safe Life Student Club, and as a Marketing Intern at AssuredGig. Specializing in clean edits, strong pacing, and meaningful motion graphics using DaVinci Resolve Fusion.",
-    "company": {
-      "name": "KL University",
-      "instagram": "https://www.instagram.com/justedits.official/"
-    }
+    "description": `Hi, I’m **Kiran Kumar Reddy**, a passionate **Video Editor, Motion Designer, and Creative Designer** with a strong interest in visual storytelling and digital content creation.
+
+I enjoy transforming ideas into engaging visual experiences through **video editing, motion graphics and social media content**. I have experience working on marketing content, promotional videos, short-form content, and creative projects.
+
+Currently pursuing my **B.Tech in Computer Science & Engineering at KL University**, I combine my technical background with my creative skills to approach projects from both a design and problem-solving perspective.
+
+I’m constantly learning, experimenting with new tools, and improving my storytelling and editing skills. My goal is to create visuals that are not only visually appealing but also communicate a clear story and leave an impact.`,
   },
   "experience": [
     {
-      "organization": "KL Student Affairs",
-      "role": "Video Editor",
-      "description": "Edited and produced videos supporting institutional events and student initiatives."
-    },
-    {
-      "organization": "Safe Life Student Club",
-      "role": "Video Content Creator",
-      "description": "Created engaging video content enhancing event visibility and audience engagement."
+      "organization": "Happy Code Labs Private Limited",
+      "role": "Junior Video Editor",
+      "department": "Creative Department",
+      "duration": "June 2026 – Present",
+      "description": "Working as a Junior Video Editor in the Creative Department, contributing to video editing, motion design, post-production, social media content, promotional videos, advertisements, and visual design projects.",
+      "responsibilities": [
+        "Video editing and post-production",
+        "Short-form content and Reels",
+        "Promotional and advertising videos",
+        "Motion graphics and animated logos",
+        "Title sequences and motion design",
+        "Social media content creation",
+        "Poster and graphic design",
+        "Client-focused visual content"
+      ],
+      "details": {
+        "Role": "Junior Video Editor",
+        "Company": "Happy Code Labs Private Limited",
+        "Department": "Creative Department",
+        "Employment Type": "Full-Time",
+        "Start Date": "25 June 2026",
+        "Location": "On-site"
+      },
+      "icon": "fa-solid fa-clapperboard"
     },
     {
       "organization": "AssuredGig",
       "role": "Marketing Intern",
-      "description": "Contributed to marketing and promotional content for branding campaigns."
+      "duration": "April 2025 – June 2025",
+      "description": "Worked as a Marketing Intern at AssuredGig, contributing to marketing activities and creative content while gaining practical experience in a professional remote-work environment.",
+      "responsibilities": [
+        "Marketing content creation",
+        "Creative content development",
+        "Social media content",
+        "Video editing and visual content",
+        "Supporting marketing campaigns",
+        "Collaboration with the marketing team"
+      ],
+      "details": {
+        "Position": "Marketing Intern",
+        "Company": "AssuredGig",
+        "Team": "Marketing Team",
+        "Duration": "2 Months",
+        "Start Date": "28 April 2025",
+        "Work Mode": "Remote"
+      },
+      "icon": "fa-solid fa-bullhorn"
     }
   ],
   "skills": [
-    "Content Writer",
     "Reels Editor",
-    "4K Editor",
     "Video Editor",
     "Motion Graphic Designer"
   ],
