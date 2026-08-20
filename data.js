@@ -11,7 +11,8 @@ export const portfolioData = {
     "name": "KIRAN KUMAR REDDY",
     "tagline": "Video Editor • Motion Graphic Designer",
     "buttons": [
-      { "label": "Explore Work", "target": "#projects" }
+      { "label": "Explore Work", "target": "#projects" },
+      { "label": "Contact Me", "target": "#contact" }
     ]
   },
   "about": {
@@ -95,56 +96,72 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
       "projectType": "Short Film",
       "role": "Editing - Color Grading",
       "watchUrl": "https://drive.google.com/file/d/1s71kraGGBi1RlA3pimVFkZXxrrlF3qa3/view",
-      "cover": "assets/3.png"
+      "cover": "assets/3.png",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Oo Katha",
       "projectType": "Short Film",
       "role": "VFX & Animation",
       "watchUrl": "https://youtu.be/OeNyvRceGE0?si=1c5mQNHrTEFV0bG1",
-      "cover": "assets/ookatha.jpg"
+      "cover": "assets/ookatha.jpg",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Oriya Pilla",
       "projectType": "Cover Song",
       "role": "Co-Editor",
       "watchUrl": "https://youtu.be/jgCFE0okhAg?si=aPu68qBv7VWCl76P",
-      "cover": "assets/oriyapilla.jpg"
+      "cover": "assets/oriyapilla.jpg",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "3B's",
       "projectType": "Teaser Trailer",
       "role": "Editor",
       "watchUrl": "https://youtu.be/awUOq-ssrPI?si=G2zh46_MnVf088CW",
-      "cover": "assets/3bs.jpg"
+      "cover": "assets/3bs.jpg",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Beyond the Vision: A Plan of Action",
       "projectType": "Reel",
       "role": "Editor",
       "watchUrl": "https://www.instagram.com/reel/DNDi9ilyFOg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/2.png"
+      "cover": "assets/2.png",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Why We Shifted Our Entire Back-End to AWS",
       "projectType": "Reel",
       "role": "Editor",
       "watchUrl": "https://www.instagram.com/reel/DMcuRopS7s1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/4.png"
+      "cover": "assets/4.png",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Pivot to Scale: How Shifting to AWS Saved Our MVP",
       "projectType": "Reel",
       "role": "Editor",
       "watchUrl": "https://www.instagram.com/reel/DMp_YE_IQq2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/5.png"
+      "cover": "assets/5.png",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
     },
     {
       "title": "Stop Making the Same Mistakes",
       "projectType": "Reel",
       "role": "Editor",
       "watchUrl": "https://www.instagram.com/reel/DM7v4ekyxRG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/6.png"
+      "cover": "assets/6.png",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
     }
   ],
   "education": [
@@ -189,6 +206,6 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
     "telegram": "https://t.me/kirankumarreddy14",
     "linkedin": "https://www.linkedin.com/in/kiran-kumar-reddy-yadamakanti-872695286/",
     "youtube": "https://www.youtube.com/channel/UCj0x5o76VOM5IvNSCHxIR2A",
-    "email": null
+    "email": "yadamakantikirankumarreddy@gmail.com"
   }
 };

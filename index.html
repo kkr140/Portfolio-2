@@ -110,6 +110,7 @@
     <section id="projects" class="projects-section section-padding">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-filter" id="projects-filter"></div>
             <div class="projects-grid" id="projects-grid">
                 <!-- Dynamically populated -->
             </div>
@@ -125,6 +126,14 @@
                 <div class="contact-info">
                     <h3>Let's Create Together</h3>
                     <p>Open to collaborations, freelance opportunities, and professional creative roles. Follow my active socials or reach out via form.</p>
+                    
+                    <div class="email-copy-bar">
+                        <span class="email-text" id="email-address"></span>
+                        <button class="btn-copy-email" id="btn-copy-email" type="button" aria-label="Copy email address">
+                            <i class="fa-regular fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    
                     <div class="contact-links-container" id="contact-links-container">
                         <!-- Dynamically populated -->
                     </div>
@@ -145,6 +154,7 @@
                     <p id="form-status"></p>
                 </div>
             </div>
+            <div id="copy-toast" class="copy-toast" role="alert" aria-live="polite">Email copied to clipboard!</div>
         </div>
     </section>
 

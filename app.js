@@ -211,7 +211,7 @@ function renderHero() {
       const a = document.createElement('a');
       a.textContent = btn.label;
       
-      const targetUrl = btn.target ? `#${btn.target}` : btn.url;
+      const targetUrl = btn.target ? (btn.target.startsWith('#') ? btn.target : `#${btn.target}`) : btn.url;
       a.setAttribute('href', validateUrl(targetUrl));
       
       // Highlight the first button as primary
@@ -494,9 +494,16 @@ function renderProjects() {
 
   grid.replaceChildren();
 
+  // Render the categories filter bar above the grid
+  renderProjectsFilter();
+
   portfolioData.largeProjects.forEach(proj => {
     const card = document.createElement('div');
     card.className = 'project-card';
+    if (proj.category === 'reels') {
+      card.classList.add('vertical-card');
+    }
+    card.setAttribute('data-category', proj.category || 'long-form');
 
     const imageWrapper = document.createElement('div');
     imageWrapper.className = 'project-image';
@@ -505,8 +512,31 @@ function renderProjects() {
     img.src = validateUrl(proj.cover);
     img.alt = proj.title;
     img.loading = 'lazy';
-
     imageWrapper.appendChild(img);
+
+    // Support silent loop hover video previews
+    if (proj.previewVideo) {
+      const video = document.createElement('video');
+      video.className = 'project-preview-video';
+      video.src = validateUrl(proj.previewVideo);
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute('preload', 'metadata');
+      
+      imageWrapper.appendChild(video);
+      
+      card.addEventListener('mouseenter', () => {
+        video.play().catch(err => console.log('Video play interrupted:', err));
+        video.classList.add('playing');
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.classList.remove('playing');
+        video.currentTime = 0;
+      });
+    }
 
     const info = document.createElement('div');
     info.className = 'project-info';
@@ -552,6 +582,47 @@ function renderProjects() {
   });
 }
 
+function renderProjectsFilter() {
+  const filterContainer = document.getElementById('projects-filter');
+  if (!filterContainer) return;
+
+  filterContainer.replaceChildren();
+
+  const categories = [
+    { id: 'all', label: 'All Projects' },
+    { id: 'reels', label: 'Reels / Short-Form' },
+    { id: 'long-form', label: 'Long-Form & Films' }
+  ];
+
+  categories.forEach((cat, index) => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    if (index === 0) btn.classList.add('active');
+    btn.textContent = cat.label;
+    btn.setAttribute('data-filter', cat.id);
+
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterProjects(cat.id);
+    });
+
+    filterContainer.appendChild(btn);
+  });
+}
+
+function filterProjects(categoryId) {
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    const cardCategory = card.getAttribute('data-category');
+    if (categoryId === 'all' || cardCategory === categoryId) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
 
 
 /* ==================== CONTACT ==================== */
@@ -590,7 +661,31 @@ function renderContact() {
     });
   }
 
-  // Hook up Contact Form with EmailJS
+  // Populate dynamic email address and clipboard copy actions
+  const emailAddressEl = document.getElementById('email-address');
+  if (emailAddressEl) {
+    emailAddressEl.textContent = portfolioData.contact.email || 'yadamakantikirankumarreddy@gmail.com';
+  }
+
+  const copyBtn = document.getElementById('btn-copy-email');
+  const toast = document.getElementById('copy-toast');
+  if (copyBtn && emailAddressEl && toast) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(emailAddressEl.textContent);
+        toast.classList.add('show');
+        copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        setTimeout(() => {
+          toast.classList.remove('show');
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> Copy';
+        }, 2500);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  }
+
+  // Hook up Contact Form with EmailJS and Validation States
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
 
@@ -601,9 +696,29 @@ function renderContact() {
       const submitButton = form.querySelector('button[type="submit"]');
       const originalButtonText = submitButton.textContent;
 
+      // Remove any existing state classes
+      form.querySelectorAll('.form-group').forEach(group => {
+        group.classList.remove('error-state', 'success-state');
+      });
+
+      // Simple email validation check
+      const emailField = form.email;
+      const emailValue = emailField.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailRegex.test(emailValue)) {
+        emailField.parentElement.classList.add('error-state');
+        status.textContent = '❌ Please enter a valid email address.';
+        status.className = 'show error';
+        return;
+      }
+
       submitButton.disabled = true;
-      submitButton.textContent = 'Sending...';
-      submitButton.style.opacity = '0.6';
+      submitButton.classList.add('btn-sending');
+      submitButton.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
+      
+      // Hide status container during transport
+      status.className = '';
       status.textContent = '';
 
       const templateParams = {
@@ -626,19 +741,31 @@ function renderContact() {
 
         if (response.status === 200) {
           status.textContent = "✅ Message sent successfully! I'll get back to you soon.";
-          status.style.color = '#4ade80';
-          status.style.fontWeight = '500';
+          status.className = 'show success';
+          form.querySelectorAll('.form-group').forEach(group => {
+            group.classList.add('success-state');
+          });
           form.reset();
+
+          // Reset success states after 4 seconds
+          setTimeout(() => {
+            form.querySelectorAll('.form-group').forEach(group => {
+              group.classList.remove('success-state');
+            });
+            status.className = '';
+          }, 4000);
         }
       } catch (error) {
         console.error('EmailJS Error:', error);
         status.textContent = '❌ Failed to send message. Please contact me directly or try again.';
-        status.style.color = '#ef4444';
-        status.style.fontWeight = '500';
+        status.className = 'show error';
+        form.querySelectorAll('.form-group').forEach(group => {
+          group.classList.add('error-state');
+        });
       } finally {
         submitButton.disabled = false;
+        submitButton.classList.remove('btn-sending');
         submitButton.textContent = originalButtonText;
-        submitButton.style.opacity = '1';
       }
     });
   }
