@@ -1,4 +1,4 @@
-import { portfolioData } from './data.js?v=11';
+import { portfolioData } from './data.js?v=12';
 
 // URL validation to prevent XSS (javascript: links)
 function validateUrl(url) {
@@ -111,7 +111,7 @@ function getVideoEmbedUrl(url) {
   return url;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   // Page Title & Meta tags
   document.title = portfolioData.website.title;
 
@@ -139,7 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Load effects & transitions
   initEffects();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /* ==================== NAVBAR ==================== */
 function initNavbar() {
@@ -524,19 +530,28 @@ function renderProjects() {
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
-      video.setAttribute('preload', 'metadata');
+      video.setAttribute('preload', 'none');
       
+      // Clean up gracefully if preview video fails to load or is empty
+      video.addEventListener('error', () => {
+        video.remove();
+      });
+
       imageWrapper.appendChild(video);
       
       card.addEventListener('mouseenter', () => {
-        video.play().catch(err => console.log('Video play interrupted:', err));
-        video.classList.add('playing');
+        if (video.parentElement) {
+          video.play().catch(() => {});
+          video.classList.add('playing');
+        }
       });
       
       card.addEventListener('mouseleave', () => {
-        video.pause();
-        video.classList.remove('playing');
-        video.currentTime = 0;
+        if (video.parentElement) {
+          video.pause();
+          video.classList.remove('playing');
+          video.currentTime = 0;
+        }
       });
     }
 
@@ -862,17 +877,19 @@ function initEffects() {
   // Smooth scrolling for navigation anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      e.preventDefault();
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      if (!targetId || targetId === '#') return;
 
-      const target = document.querySelector(targetId);
-      if (target) {
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
+      try {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      } catch (err) {}
     });
   });
 

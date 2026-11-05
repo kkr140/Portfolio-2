@@ -52,13 +52,38 @@ const server = http.createServer((req, res) => {
     const ext = path.extname(safePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
+    if (stats.size === 0) {
+      res.writeHead(200, {
+        'Content-Length': 0,
+        'Content-Type': contentType,
+      });
+      res.end();
+      return;
+    }
+
     const range = req.headers.range;
     if (range && ext === '.mp4') {
       const parts = range.replace(/bytes=/, '').split('-');
-      const start = parseInt(parts[0], 10);
+      const start = parseInt(parts[0], 10) || 0;
       const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+
+      if (start >= stats.size || end >= stats.size || start > end) {
+        res.writeHead(416, {
+          'Content-Range': `bytes */${stats.size}`,
+        });
+        res.end();
+        return;
+      }
+
       const chunkSize = (end - start) + 1;
       const fileStream = fs.createReadStream(safePath, { start, end });
+
+      fileStream.on('error', () => {
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+        }
+        res.end();
+      });
 
       res.writeHead(206, {
         'Content-Range': `bytes ${start}-${end}/${stats.size}`,
@@ -75,7 +100,14 @@ const server = http.createServer((req, res) => {
       'Content-Type': contentType,
       'Accept-Ranges': 'bytes',
     });
-    fs.createReadStream(safePath).pipe(res);
+    const fileStream = fs.createReadStream(safePath);
+    fileStream.on('error', () => {
+      if (!res.headersSent) {
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+      }
+      res.end();
+    });
+    fileStream.pipe(res);
   });
 });
 
