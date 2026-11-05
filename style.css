@@ -92,20 +92,21 @@ li {
     top: -200px;
     left: -200px;
     background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+    animation: float-glow-1 25s infinite ease-in-out;
 }
 
 .glow-2 {
     bottom: -200px;
     right: -200px;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+    animation: float-glow-2 30s infinite ease-in-out;
 }
 
 /* Scroll Reveal Base */
 .fade-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: var(--transition-smooth);
-    transition-duration: 0.8s;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fade-reveal.visible {
@@ -235,6 +236,10 @@ li {
     color: var(--text-highlight);
     display: block;
     margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
 }
 
 .hero-text h1 {
@@ -243,6 +248,10 @@ li {
     line-height: 1.1;
     margin-bottom: 20px;
     letter-spacing: -0.03em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.4s;
 }
 
 .name-highlight {
@@ -257,11 +266,18 @@ li {
     color: var(--text-muted);
     min-height: 40px;
     margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 0.6s;
 }
 
 .hero-buttons {
     display: flex;
     gap: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.8s;
 }
 
 /* Button Components */
@@ -312,7 +328,9 @@ li {
     padding: 6px;
     background: var(--primary-gradient);
     box-shadow: var(--shadow-glow);
-    animation: breathing 6s ease-in-out infinite;
+    opacity: 0;
+    transform: scale(0.85);
+    animation: profileFrameEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards, breathing 6s ease-in-out infinite 1.2s;
 }
 
 .profile-img {
@@ -327,6 +345,47 @@ li {
 @keyframes breathing {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes profileFrameEntrance {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes float-glow-1 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(120px, 80px) scale(1.15);
+    }
+    66% {
+        transform: translate(-60px, 160px) scale(0.9);
+    }
+}
+
+@keyframes float-glow-2 {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(-100px, -120px) scale(1.2);
+    }
 }
 
 /* Scroll Down Mouse Indicator */
@@ -1036,7 +1095,6 @@ li {
 .contact-link-item.whatsapp i { color: #25d366; }
 .contact-link-item.telegram i { color: #0088cc; }
 .contact-link-item.instagram_work i { color: #ec4899; }
-.contact-link-item.linkedin i { color: #0077b5; }
 .contact-link-item.youtube i { color: #ff0000; }
 
 .contact-form-container {
@@ -1137,7 +1195,6 @@ li {
 .footer-social-link.whatsapp:hover { color: #25d366; }
 .footer-social-link.telegram:hover { color: #0088cc; }
 .footer-social-link.instagram_work:hover { color: #ec4899; }
-.footer-social-link.linkedin:hover { color: #0077b5; }
 .footer-social-link.youtube:hover { color: #ff0000; }
 
 /* ==================== VIDEO MODAL ==================== */

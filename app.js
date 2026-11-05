@@ -1,4 +1,4 @@
-import { portfolioData } from './data.js?v=2';
+import { portfolioData } from './data.js?v=10';
 
 // URL validation to prevent XSS (javascript: links)
 function validateUrl(url) {
@@ -219,8 +219,10 @@ function renderHero() {
         a.className = 'btn btn-primary';
       } else {
         a.className = 'btn btn-secondary';
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener noreferrer');
+        if (!targetUrl.startsWith('#')) {
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener noreferrer');
+        }
       }
       heroButtonsContainer.appendChild(a);
     });
@@ -580,6 +582,9 @@ function renderProjects() {
     card.appendChild(info);
     grid.appendChild(card);
   });
+
+  // Filter initially to the first category (Long-Form & Short Films) without adding visible class
+  filterProjects('long-form', true);
 }
 
 function renderProjectsFilter() {
@@ -589,9 +594,9 @@ function renderProjectsFilter() {
   filterContainer.replaceChildren();
 
   const categories = [
-    { id: 'all', label: 'All Projects' },
+    { id: 'long-form', label: 'Long-Form & Short Films' },
     { id: 'reels', label: 'Reels / Short-Form' },
-    { id: 'long-form', label: 'Long-Form & Films' }
+    { id: 'all', label: 'All Projects' }
   ];
 
   categories.forEach((cat, index) => {
@@ -611,14 +616,25 @@ function renderProjectsFilter() {
   });
 }
 
-function filterProjects(categoryId) {
+function filterProjects(categoryId, isInitial = false) {
   const cards = document.querySelectorAll('.project-card');
+  let visibleIndex = 0;
   cards.forEach(card => {
     const cardCategory = card.getAttribute('data-category');
     if (categoryId === 'all' || cardCategory === categoryId) {
       card.classList.remove('hidden');
+      if (!isInitial) {
+        card.style.transitionDelay = `${visibleIndex * 0.08}s`;
+        card.offsetHeight; // Force reflow
+        card.classList.add('visible');
+        visibleIndex++;
+      }
     } else {
       card.classList.add('hidden');
+      if (!isInitial) {
+        card.classList.remove('visible');
+        card.style.transitionDelay = '0s';
+      }
     }
   });
 }
@@ -636,7 +652,6 @@ function renderContact() {
       { key: 'whatsapp', icon: 'fa-brands fa-whatsapp', label: 'WhatsApp', url: portfolioData.contact.whatsapp },
       { key: 'telegram', icon: 'fa-brands fa-telegram', label: 'Telegram', url: portfolioData.contact.telegram },
       { key: 'instagram_work', icon: 'fa-solid fa-clapperboard', label: 'Instagram (Work)', url: portfolioData.contact.instagram_work },
-      { key: 'linkedin', icon: 'fa-brands fa-linkedin', label: 'LinkedIn', url: portfolioData.contact.linkedin },
       { key: 'youtube', icon: 'fa-brands fa-youtube', label: 'YouTube', url: portfolioData.contact.youtube }
     ];
 
@@ -664,7 +679,7 @@ function renderContact() {
   // Populate dynamic email address and clipboard copy actions
   const emailAddressEl = document.getElementById('email-address');
   if (emailAddressEl) {
-    emailAddressEl.textContent = portfolioData.contact.email || 'yadamakantikirankumarreddy@gmail.com';
+    emailAddressEl.textContent = portfolioData.contact.email || 'kirankumarreddy74161@gmail.com';
   }
 
   const copyBtn = document.getElementById('btn-copy-email');
@@ -782,7 +797,6 @@ function renderFooter() {
     { key: 'whatsapp', icon: 'fa-brands fa-whatsapp', url: portfolioData.contact.whatsapp },
     { key: 'telegram', icon: 'fa-brands fa-telegram', url: portfolioData.contact.telegram },
     { key: 'instagram_work', icon: 'fa-brands fa-instagram', url: portfolioData.contact.instagram_work },
-    { key: 'linkedin', icon: 'fa-brands fa-linkedin', url: portfolioData.contact.linkedin },
     { key: 'youtube', icon: 'fa-brands fa-youtube', url: portfolioData.contact.youtube }
   ];
 
@@ -942,7 +956,36 @@ function initEffects() {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.timeline-item, .project-card, .software-card, .reel-card, .creative-card').forEach(el => {
+  // Stagger all timeline items
+  document.querySelectorAll('.timeline-item').forEach((el, index) => {
+    el.classList.add('fade-reveal');
+    el.style.transitionDelay = `${(index % 2) * 0.15}s`;
+    observer.observe(el);
+  });
+
+  // Stagger all project cards
+  document.querySelectorAll('.project-card').forEach((el, index) => {
+    el.classList.add('fade-reveal');
+    el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+    observer.observe(el);
+  });
+
+  // Stagger skill badges in Creative Skills and Software Proficiency
+  document.querySelectorAll('#skills-badges .skill-badge, #software-proficiency-grid .skill-badge').forEach((el, index) => {
+    el.classList.add('fade-reveal');
+    el.style.transitionDelay = `${(index % 6) * 0.06}s`;
+    observer.observe(el);
+  });
+
+  // Stagger other cards/containers
+  document.querySelectorAll('.software-card, .reel-card, .creative-card').forEach((el, index) => {
+    el.classList.add('fade-reveal');
+    el.style.transitionDelay = `${(index % 2) * 0.1}s`;
+    observer.observe(el);
+  });
+
+  // Reveal section titles
+  document.querySelectorAll('.section-title').forEach(el => {
     el.classList.add('fade-reveal');
     observer.observe(el);
   });

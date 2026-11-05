@@ -92,15 +92,6 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
   ],
   "largeProjects": [
     {
-      "title": "Oka Nirnayam",
-      "projectType": "Short Film",
-      "role": "Editing - Color Grading",
-      "watchUrl": "https://drive.google.com/file/d/1s71kraGGBi1RlA3pimVFkZXxrrlF3qa3/view",
-      "cover": "assets/3.png",
-      "category": "long-form",
-      "previewVideo": "assets/video1.mp4"
-    },
-    {
       "title": "Oo Katha",
       "projectType": "Short Film",
       "role": "VFX & Animation",
@@ -122,44 +113,89 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
       "title": "3B's",
       "projectType": "Teaser Trailer",
       "role": "Editor",
-      "watchUrl": "https://youtu.be/awUOq-ssrPI?si=G2zh46_MnVf088CW",
-      "cover": "assets/3bs.jpg",
+      "watchUrl": "https://youtu.be/awUOq-ssrPI?si=pdFEPxPDPgt72EOR",
+      "cover": "assets/3bs-teaser.jpg",
       "category": "long-form",
       "previewVideo": "assets/video1.mp4"
     },
     {
-      "title": "Beyond the Vision: A Plan of Action",
+      "title": "3B's",
+      "projectType": "Release Trailer",
+      "role": "Editor",
+      "watchUrl": "https://youtu.be/47_Qzwcc-HM?si=366zufd6gxs6S0m8",
+      "cover": "assets/3bs.jpg?v=2",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
+      "title": "AssuredGig | Follow the Journey",
       "projectType": "Reel",
       "role": "Editor",
-      "watchUrl": "https://www.instagram.com/reel/DNDi9ilyFOg/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/2.png",
+      "watchUrl": "https://www.instagram.com/reel/DLCzYMcoL0b/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/8.jpg",
       "category": "reels",
       "previewVideo": "assets/video1.mp4"
     },
     {
-      "title": "Why We Shifted Our Entire Back-End to AWS",
+      "title": "Meet Head Chef Jatin | Behind the Flavours",
       "projectType": "Reel",
       "role": "Editor",
-      "watchUrl": "https://www.instagram.com/reel/DMcuRopS7s1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/4.png",
+      "watchUrl": "https://www.instagram.com/reel/DbUs49RAHzE/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/7.jpg",
       "category": "reels",
       "previewVideo": "assets/video1.mp4"
     },
     {
-      "title": "Pivot to Scale: How Shifting to AWS Saved Our MVP",
+      "title": "India Paradise | Grand Launch",
       "projectType": "Reel",
       "role": "Editor",
-      "watchUrl": "https://www.instagram.com/reel/DMp_YE_IQq2/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/5.png",
+      "watchUrl": "https://www.instagram.com/reel/DaF1G7AiWC3/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/9.jpg",
       "category": "reels",
       "previewVideo": "assets/video1.mp4"
     },
     {
-      "title": "Stop Making the Same Mistakes",
+      "title": "The 0.01% Club | Elevate the Game",
       "projectType": "Reel",
       "role": "Editor",
-      "watchUrl": "https://www.instagram.com/reel/DM7v4ekyxRG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      "cover": "assets/6.png",
+      "watchUrl": "https://www.instagram.com/reel/DNDi9ilyFOg/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/10.jpg",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
+      "title": "Madras Filter Coffee | Comfort in a Cup",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DbnuwgYiZxn/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/11.jpg",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
+      "title": "Madras Filter Coffee | A Stop Worth Pausing For",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/Db8VEq4jDpD/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/12.jpg",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
+      "title": "Wings at Cromwell | Plate of Good Mood",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/DcEEdvXGsCK/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/13.jpg",
+      "category": "reels",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
+      "title": "Waaris Indian Kitchen & Bar | Brand Story",
+      "projectType": "Reel",
+      "role": "Editor",
+      "watchUrl": "https://www.instagram.com/reel/Dbv66hcCkPj/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==",
+      "cover": "assets/14.jpg",
       "category": "reels",
       "previewVideo": "assets/video1.mp4"
     }
@@ -204,8 +240,7 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
     "instagram_work": "https://www.instagram.com/justedits.official/",
     "whatsapp": "https://wa.me/qr/POWDIQ5KEKTSO1",
     "telegram": "https://t.me/kirankumarreddy14",
-    "linkedin": "https://www.linkedin.com/in/kiran-kumar-reddy-yadamakanti-872695286/",
     "youtube": "https://www.youtube.com/channel/UCj0x5o76VOM5IvNSCHxIR2A",
-    "email": "yadamakantikirankumarreddy@gmail.com"
+    "email": "kirankumarreddy74161@gmail.com"
   }
 };
