@@ -1,4 +1,4 @@
-import { portfolioData } from './data.js?v=10';
+import { portfolioData } from './data.js?v=11';
 
 // URL validation to prevent XSS (javascript: links)
 function validateUrl(url) {

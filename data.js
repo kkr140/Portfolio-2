@@ -30,8 +30,8 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
       "organization": "Happy Code Labs Private Limited",
       "role": "Junior Video Editor",
       "department": "Creative Department",
-      "duration": "June 2026 – Present",
-      "description": "Working as a Junior Video Editor in the Creative Department, contributing to video editing, motion design, post-production, social media content, promotional videos, advertisements, and visual design projects.",
+      "duration": "June 2026 – September 2026",
+      "description": "Worked as a Junior Video Editor in the Creative Department, contributing to video editing, motion design, post-production, social media content, promotional videos, advertisements, and visual design projects.",
       "responsibilities": [
         "Video editing and post-production",
         "Short-form content and Reels",
@@ -47,7 +47,9 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
         "Company": "Happy Code Labs Private Limited",
         "Department": "Creative Department",
         "Employment Type": "Full-Time",
+        "Duration": "3 Months",
         "Start Date": "25 June 2026",
+        "End Date": "19 September 2026",
         "Location": "On-site"
       },
       "icon": "fa-solid fa-clapperboard"
