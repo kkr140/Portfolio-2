@@ -6,7 +6,7 @@ export const portfolioData = {
     "displayName": "Kiran Kumar Reddy",
     "copyright": ""
   },
-  "navigation": ["Home", "About", "Experience", "Projects", "Skills", "Contact"],
+  "navigation": ["Home", "About", "Experience", "Achievements", "Projects", "Skills", "Contact"],
   "hero": {
     "name": "KIRAN KUMAR REDDY",
     "tagline": "Video Editor • Motion Graphic Designer",
@@ -76,6 +76,59 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
         "Work Mode": "Remote"
       },
       "icon": "fa-solid fa-bullhorn"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "president",
+      "role": "President",
+      "department": "Student Affairs",
+      "organization": "KL University",
+      "yearLabel": "4th Year B.Tech",
+      "category": "Leadership",
+      "categoryIcon": "fa-solid fa-crown",
+      "statusBadge": "Current Role",
+      "cardClass": "leadership-card",
+      "progressionTag": "Promoted from Editor → President",
+      "responsibilities": [
+        "Currently serving as the President of Student Affairs during my 4th year of B.Tech.",
+        "Leading and coordinating Student Affairs activities, teams, and event-related responsibilities.",
+        "Managing creative initiatives and supporting student engagement across campus."
+      ]
+    },
+    {
+      "id": "editor",
+      "role": "Editor",
+      "department": "Student Affairs",
+      "organization": "KL University",
+      "yearLabel": "3rd Year B.Tech",
+      "category": "Media & Editing",
+      "categoryIcon": "fa-solid fa-clapperboard",
+      "statusBadge": "Foundation Role",
+      "cardClass": "media-card",
+      "progressionTag": "Pathway: Advanced to President",
+      "responsibilities": [
+        "Worked as an Editor in the Student Affairs department during my 3rd year of B.Tech.",
+        "Responsible for video editing, event coverage, and creating media content for university activities.",
+        "Contributed to documenting and promoting university events through creative media."
+      ]
+    },
+    {
+      "id": "protocol",
+      "role": "Protocol Team Member",
+      "department": "Protocol & Event Operations",
+      "organization": "University Protocol Team",
+      "yearLabel": "3rd & 4th Year B.Tech",
+      "category": "Protocol",
+      "categoryIcon": "fa-solid fa-handshake",
+      "statusBadge": "Core Member",
+      "cardClass": "protocol-card",
+      "progressionTag": "Official University Event Operations",
+      "responsibilities": [
+        "Actively participated in the University Protocol Team during my 3rd and 4th years.",
+        "Assisted with protocol management, guest coordination, and event operations.",
+        "Contributed to organizing and managing official university events."
+      ]
     }
   ],
   "skills": [

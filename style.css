@@ -710,6 +710,412 @@ li {
     padding: 35px;
 }
 
+/* ==================== ACHIEVEMENTS & LEADERSHIP ==================== */
+.achievements-section {
+    position: relative;
+}
+
+.achievements-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+/* Progression Journey Banner */
+.leadership-progression-banner {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 28px 36px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+}
+
+.leadership-progression-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+}
+
+.leadership-progression-banner:hover {
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-glow);
+}
+
+.progression-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.progression-title-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-highlight);
+    background: rgba(168, 85, 247, 0.12);
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    padding: 6px 16px;
+    border-radius: 30px;
+}
+
+.progression-summary {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.progression-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.progression-node {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: var(--transition-smooth);
+}
+
+.progression-node:hover {
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+}
+
+.progression-node.current {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border-color: rgba(168, 85, 247, 0.35);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.12);
+}
+
+.node-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-highlight);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+}
+
+.progression-node.current .node-icon {
+    background: var(--primary-gradient);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.45);
+}
+
+.node-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.node-year {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.node-role {
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.node-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.progression-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 10px;
+    min-width: 170px;
+}
+
+.connector-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #a855f7 0%, #3b82f6 100%);
+    position: relative;
+    border-radius: 2px;
+}
+
+.connector-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #e9d5ff;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    padding: 5px 14px;
+    border-radius: 30px;
+    white-space: nowrap;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.15);
+}
+
+.connector-pill i {
+    animation: connectorArrowPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes connectorArrowPulse {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); }
+}
+
+/* Achievement Cards Grid */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.achievement-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: var(--transition-smooth);
+    overflow: hidden;
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    transition: var(--transition-smooth);
+}
+
+.achievement-card.leadership-card::before {
+    background: linear-gradient(90deg, #f59e0b, #eab308);
+}
+
+.achievement-card.media-card::before {
+    background: linear-gradient(90deg, #a855f7, #c084fc);
+}
+
+.achievement-card.protocol-card::before {
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.achievement-card:hover {
+    border-color: var(--border-glow);
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 25px rgba(168, 85, 247, 0.2);
+    transform: translateY(-6px);
+    background: var(--bg-card-hover);
+}
+
+.achievement-card-header {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.achievement-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    transition: var(--transition-smooth);
+}
+
+.achievement-icon-wrapper.leadership {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(234, 179, 8, 0.15) 100%);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fbbf24;
+}
+
+.achievement-icon-wrapper.media {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(192, 132, 252, 0.15) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #c084fc;
+}
+
+.achievement-icon-wrapper.protocol {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: #60a5fa;
+}
+
+.achievement-card:hover .achievement-icon-wrapper {
+    transform: scale(1.1) rotate(6deg);
+}
+
+.achievement-header-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.achievement-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.achievement-badges .badge {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge.year-badge {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-muted);
+}
+
+.badge.status-badge.current {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.28);
+    color: #4ade80;
+}
+
+.badge.cat-badge {
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+}
+
+.achievement-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    line-height: 1.3;
+}
+
+.achievement-org {
+    font-size: 0.88rem;
+    color: var(--text-highlight);
+    font-weight: 500;
+}
+
+.achievement-progression-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    margin: 8px 0 16px;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    color: #e9d5ff;
+}
+
+.achievement-progression-tag.leadership {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(168, 85, 247, 0.12) 100%);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #fef08a;
+}
+
+.achievement-progression-tag i {
+    font-size: 0.85rem;
+}
+
+.achievement-highlights {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.achievement-highlights h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.achievement-highlights h4 i {
+    color: var(--text-highlight);
+    font-size: 0.85rem;
+}
+
+.achievement-highlights ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.achievement-highlights li {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.achievement-highlights li i {
+    color: #a855f7;
+    font-size: 0.75rem;
+    margin-top: 4px;
+    transition: var(--transition-smooth);
+}
+
+.achievement-card:hover .achievement-highlights li i {
+    transform: translateX(3px);
+}
+
 /* ==================== SKILLS & SOFTWARE ==================== */
 .skills-layout {
     display: grid;
@@ -1301,9 +1707,37 @@ li {
     .detailed-card .timeline-content {
         padding: 24px;
     }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
+    .progression-track {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .progression-connector {
+        width: 100%;
+        min-width: auto;
+        padding: 6px 0;
+    }
+
+    .connector-line {
+        width: 2px;
+        height: 24px;
+        background: linear-gradient(180deg, #a855f7 0%, #3b82f6 100%);
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leadership-progression-banner {
+        padding: 24px 20px;
+    }
     .navbar {
         padding: 20px 24px;
     }

@@ -1,4 +1,4 @@
-import { portfolioData } from './data.js?v=13';
+import { portfolioData } from './data.js?v=14';
 
 // URL validation to prevent XSS (javascript: links)
 function validateUrl(url) {
@@ -127,6 +127,7 @@ function initApp() {
   renderHero();
   renderAbout();
   renderExperience();
+  renderAchievements();
   renderEducation();
   renderSkills();
   renderSoftwareProficiency();
@@ -403,6 +404,185 @@ function renderExperience() {
     item.appendChild(content);
     timeline.appendChild(item);
   });
+}
+
+/* ==================== ACHIEVEMENTS & LEADERSHIP ==================== */
+function renderAchievements() {
+  const container = document.getElementById('achievements-container');
+  if (!container || !portfolioData.achievements) return;
+
+  container.replaceChildren();
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'achievements-wrapper';
+
+  // 1. Leadership Progression Journey Banner (Editor -> President)
+  const banner = document.createElement('div');
+  banner.className = 'leadership-progression-banner fade-reveal';
+
+  const bannerHeader = document.createElement('div');
+  bannerHeader.className = 'progression-header';
+
+  const titleBadge = document.createElement('div');
+  titleBadge.className = 'progression-title-badge';
+  titleBadge.innerHTML = '<i class="fa-solid fa-arrow-trend-up"></i><span>Leadership Progression</span>';
+
+  const summary = document.createElement('p');
+  summary.className = 'progression-summary';
+  summary.textContent = 'Demonstrated campus leadership growth: from Media Editor to Student Affairs President';
+
+  bannerHeader.appendChild(titleBadge);
+  bannerHeader.appendChild(summary);
+  banner.appendChild(bannerHeader);
+
+  const track = document.createElement('div');
+  track.className = 'progression-track';
+
+  // Step 1: Editor
+  const node1 = document.createElement('div');
+  node1.className = 'progression-node past';
+  node1.innerHTML = `
+    <div class="node-icon"><i class="fa-solid fa-clapperboard"></i></div>
+    <div class="node-info">
+      <span class="node-year">3rd Year B.Tech</span>
+      <h4 class="node-role">Student Affairs – Editor</h4>
+      <span class="node-desc">Media Coverage & Creative Direction</span>
+    </div>
+  `;
+
+  // Connector Pill (Editor -> President)
+  const connector = document.createElement('div');
+  connector.className = 'progression-connector';
+  connector.innerHTML = `
+    <div class="connector-line"></div>
+    <div class="connector-pill">
+      <span>Promoted to President</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  `;
+
+  // Step 2: President
+  const node2 = document.createElement('div');
+  node2.className = 'progression-node current';
+  node2.innerHTML = `
+    <div class="node-icon"><i class="fa-solid fa-crown"></i></div>
+    <div class="node-info">
+      <span class="node-year">4th Year B.Tech</span>
+      <h4 class="node-role">Student Affairs – President</h4>
+      <span class="node-desc">Executive Campus Leadership</span>
+    </div>
+  `;
+
+  track.appendChild(node1);
+  track.appendChild(connector);
+  track.appendChild(node2);
+  banner.appendChild(track);
+  wrapper.appendChild(banner);
+
+  // 2. Achievements Grid
+  const grid = document.createElement('div');
+  grid.className = 'achievements-grid';
+
+  portfolioData.achievements.forEach(item => {
+    const card = document.createElement('div');
+    card.className = `achievement-card ${item.cardClass || ''}`;
+
+    // Header
+    const cardHeader = document.createElement('div');
+    cardHeader.className = 'achievement-card-header';
+
+    const iconWrapper = document.createElement('div');
+    const catLower = item.category.toLowerCase();
+    const iconTypeClass = catLower.includes('leadership') ? 'leadership' : catLower.includes('media') ? 'media' : 'protocol';
+    iconWrapper.className = `achievement-icon-wrapper ${iconTypeClass}`;
+    
+    const icon = document.createElement('i');
+    icon.className = item.categoryIcon || 'fa-solid fa-award';
+    iconWrapper.appendChild(icon);
+
+    const headerMeta = document.createElement('div');
+    headerMeta.className = 'achievement-header-meta';
+
+    const badges = document.createElement('div');
+    badges.className = 'achievement-badges';
+
+    const yearBadge = document.createElement('span');
+    yearBadge.className = 'badge year-badge';
+    yearBadge.innerHTML = `<i class="fa-regular fa-calendar"></i> ${item.yearLabel}`;
+    badges.appendChild(yearBadge);
+
+    if (item.statusBadge) {
+      const statusBadge = document.createElement('span');
+      const isCurrent = item.statusBadge.toLowerCase().includes('current');
+      statusBadge.className = `badge ${isCurrent ? 'status-badge current' : 'cat-badge'}`;
+      statusBadge.innerHTML = isCurrent
+        ? `<i class="fa-solid fa-circle-check"></i> ${item.statusBadge}`
+        : `<i class="fa-solid fa-shield-halved"></i> ${item.statusBadge}`;
+      badges.appendChild(statusBadge);
+    }
+
+    const title = document.createElement('h3');
+    title.className = 'achievement-title';
+    title.textContent = `${item.department} – ${item.role}`;
+
+    const org = document.createElement('span');
+    org.className = 'achievement-org';
+    org.textContent = item.organization;
+
+    headerMeta.appendChild(badges);
+    headerMeta.appendChild(title);
+    headerMeta.appendChild(org);
+
+    cardHeader.appendChild(iconWrapper);
+    cardHeader.appendChild(headerMeta);
+    card.appendChild(cardHeader);
+
+    // Progression Tag
+    if (item.progressionTag) {
+      const tag = document.createElement('div');
+      const isLeadership = catLower.includes('leadership');
+      tag.className = `achievement-progression-tag ${isLeadership ? 'leadership' : ''}`;
+      
+      const tagIcon = document.createElement('i');
+      tagIcon.className = isLeadership
+        ? 'fa-solid fa-crown'
+        : catLower.includes('media')
+        ? 'fa-solid fa-arrow-trend-up'
+        : 'fa-solid fa-building-columns';
+      
+      const tagText = document.createElement('span');
+      tagText.textContent = item.progressionTag;
+
+      tag.appendChild(tagIcon);
+      tag.appendChild(tagText);
+      card.appendChild(tag);
+    }
+
+    // Key Contributions Subsection
+    if (item.responsibilities && item.responsibilities.length > 0) {
+      const highlights = document.createElement('div');
+      highlights.className = 'achievement-highlights';
+
+      const h4 = document.createElement('h4');
+      h4.innerHTML = '<i class="fa-solid fa-list-check"></i> Key Contributions';
+      highlights.appendChild(h4);
+
+      const ul = document.createElement('ul');
+      item.responsibilities.forEach(resp => {
+        const li = document.createElement('li');
+        li.innerHTML = `<i class="fa-solid fa-chevron-right"></i> <span>${resp}</span>`;
+        ul.appendChild(li);
+      });
+
+      highlights.appendChild(ul);
+      card.appendChild(highlights);
+    }
+
+    grid.appendChild(card);
+  });
+
+  wrapper.appendChild(grid);
+  container.appendChild(wrapper);
 }
 
 /* ==================== EDUCATION ==================== */
@@ -977,6 +1157,13 @@ function initEffects() {
   document.querySelectorAll('.timeline-item').forEach((el, index) => {
     el.classList.add('fade-reveal');
     el.style.transitionDelay = `${(index % 2) * 0.15}s`;
+    observer.observe(el);
+  });
+
+  // Stagger achievement cards and progression banner
+  document.querySelectorAll('.leadership-progression-banner, .achievement-card').forEach((el, index) => {
+    el.classList.add('fade-reveal');
+    el.style.transitionDelay = `${(index % 3) * 0.12}s`;
     observer.observe(el);
   });
 
