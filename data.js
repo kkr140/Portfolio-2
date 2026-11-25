@@ -130,6 +130,15 @@ I’m constantly learning, experimenting with new tools, and improving my storyt
       "previewVideo": "assets/video1.mp4"
     },
     {
+      "title": "3B's",
+      "projectType": "Short Film",
+      "role": "Editor",
+      "watchUrl": "https://youtu.be/BBbCNr5lR-s?si=x6kaUJmoNTfctvc9",
+      "cover": "assets/3bs-shortfilm.jpg",
+      "category": "long-form",
+      "previewVideo": "assets/video1.mp4"
+    },
+    {
       "title": "AssuredGig | Follow the Journey",
       "projectType": "Reel",
       "role": "Editor",
